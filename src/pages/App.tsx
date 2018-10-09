@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import logo from '../assets/logo.svg';
+import HomePage from './Home';
+import SettingPage from './Setting';
 
 class App extends React.Component {
   public render() {
@@ -14,6 +17,10 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <Switch>
+          <Route path={'/home'} component={HomePage} />
+          <Route path={'/setting'} component={SettingPage} />
+        </Switch>
       </div>
     );
   }
