@@ -11,6 +11,14 @@ const FEED_QUERY = gql`
       id
       url
       description
+      postedBy{
+        id
+        name
+        email
+      }
+      votes{
+        id
+      }
     }
   }
 `
@@ -53,7 +61,7 @@ class LinkList extends React.Component<{}, {}> {
           
           return (
               <div>
-                {linksToRender.map((link: App.Link) => <Link key={link.id} link={link} />)}
+                {linksToRender.map((link: App.Link, index: number) => <Link key={link.id} index={index} link={link} />)}
               </div>
             )
           }
