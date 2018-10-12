@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import logo from '@/assets/logo.svg';
 import HomePage from './Home';
 import SettingPage from './Setting';
+import CreatePage from './Create';
 
 import styles from './App.scss';
 
@@ -21,6 +22,7 @@ class App extends React.Component {
         <Switch>
           <Route path={'/home'} component={HomePage} />
           <Route path={'/setting'} component={SettingPage} />
+          <Route path={'/create'} component={CreatePage} />
         </Switch>
       </div>
     );
