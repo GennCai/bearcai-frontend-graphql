@@ -7,6 +7,8 @@ import SettingPage from './Setting';
 import CreatePage from './Create';
 
 import styles from './App.scss';
+import Header from './layouts/Header';
+import Login from './Login';
 
 class App extends React.Component {
   public render() {
@@ -19,11 +21,15 @@ class App extends React.Component {
         <p className={styles["App-intro"]}>
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <Switch>
-          <Route path={'/home'} component={HomePage} />
-          <Route path={'/setting'} component={SettingPage} />
-          <Route path={'/create'} component={CreatePage} />
-        </Switch>
+        <Header />
+        <div className="ph3 pv1 background-gray">
+          <Switch>
+            <Route path={'/home'} component={HomePage} />
+            <Route path={'/setting'} component={SettingPage} />
+            <Route path={'/create'} component={CreatePage} />
+            <Route path={'/login'} component={Login} />
+          </Switch>
+        </div>
       </div>
     );
   }

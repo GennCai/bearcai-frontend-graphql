@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
+import history from '@/utils/history';
 
 interface IState {
   description: string
@@ -39,6 +40,10 @@ class CreateList extends React.Component<{}, IState> {
     })
   }
 
+  public afterSubmit = () => {
+    history.push('/home')
+  }
+
   public render() {    
     const { description, url } = this.state
     return (
@@ -59,7 +64,10 @@ class CreateList extends React.Component<{}, IState> {
             placeholder="The URL for the link"
           />
         </div>
-        <Mutation mutation={POST_MUTATION} variables={{ description, url }}>
+        <Mutation mutation={POST_MUTATION}
+          variables={{ description, url }}
+          onCompleted={this.afterSubmit}
+        >
           {(postMutation) => (
             <button onClick={this.onSubmit(postMutation)}>
               Submit

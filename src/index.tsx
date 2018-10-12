@@ -11,6 +11,7 @@ import { ApolloProvider } from 'react-apollo'
 
 import registerServiceWorker from './registerServiceWorker';
 import history from './utils/history';
+import { AUTH_TOKEN } from './utils/constants';
 
 import './styles/index.css';
 
@@ -22,7 +23,7 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem(AUTH_TOKEN);
   // return the headers to the context so httpLink can read them
   return {
     headers: {
@@ -33,7 +34,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 export const client = new ApolloClient({
-  link: httpLink,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 })
 
